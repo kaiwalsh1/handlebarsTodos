@@ -81,12 +81,29 @@ configure body parser
 
 run server and see if everything works
 
+require packages, database
 
+## 7- Create routes
+index.js 
+    - require router and call .Router()
+server.js
+    - require routes folder
+    - set router after body parser
 
+create apiRoutes
+- copy lines inside index.js
+- paste into apiRoutes index.js
 
+routes > index.js
+- require apiRoutes
+- prepend /api to every route declared in apiRoutes
 
+create userRoutes inside apiRoutes folder
+- copy what's in apiRoutes file
 
-
+apiRoutes > index.js
+- require userRoutes
+- prepend /users to every route
 
 
 
