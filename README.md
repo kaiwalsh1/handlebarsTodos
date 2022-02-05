@@ -60,6 +60,10 @@ User table takes two params
 
 Export User class
 
+- create model index.js file
+    - require User class
+    - export an object that contains the User class
+
 ## 6- Test that everything works
 create server.js file
 require necessary things:
@@ -104,6 +108,13 @@ create userRoutes inside apiRoutes folder
 apiRoutes > index.js
 - require userRoutes
 - prepend /users to every route
+
+userRoutes > index.js
+- logic will go in controller
+
+## 8- Create controllers
+create folder 'controllers'
+create userController.js file
 
 
 
