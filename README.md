@@ -63,6 +63,7 @@ Export User class
 - create model index.js file
     - require User class
     - export an object that contains the User class
+    (pulls out any of our classes)
 
 ## 6- Test that everything works
 create server.js file
@@ -116,7 +117,60 @@ userRoutes > index.js
 create folder 'controllers'
 create userController.js file
 
+create a variable that pulls out the User model, then grab the index inside of the models folder
 
+module.exports - export object with many functions/methods
+
+createUser:
+- pull out username, email + pw from req.body
+- check if those exist
+- try catch to attempt to create a user
+
+getAllUsers:
+- try catch to get all users
+
+require methods within userController file in userRoutes > index.js
+- create route for get and post requests from userController
+
+## 9- Test that routes work
+start server and test routes on postman
+- create a post request to create a user
+
+## 10- Create views (front end)
+create views folder
+create layouts folder within views
+
+create file in layouts: main.handlebars
+- create html
+- add {{{ body }}} to <body>
+
+create allUsers.handlebars file in views folder
+
+update userController getAllUsers function 
+- don't return json
+- return res.render('') 
+    - first param: name of handlebars file you want to render it to
+    - second param: an object with the data you want this template to have access to the moment it renders
+
+create another view
+singleUser.handlebars
+- create template for single user page
+- create function to get user by id (in userController)
+- wire up controller to your route (userRoutes)
+
+Build the view
+Build the controller
+Wire up the controller to your route
+
+
+main.handlebars - single page application
+- it's the main template that will be rendered no matter what
+
+res.render - will look in views folder for a template with the same name declared in endpoint function
+- will inject variables we passed in
+- can access any variables passed in
+
+will take template and render in the body {{{body}}} and render template to the page
 
 
 
