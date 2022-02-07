@@ -1,11 +1,16 @@
+<form>
+    <input id="email" type="text"/>
+    <input id="password" type="password"/>
+    <button id="login">Login</button>
+</form>
+
+{{#if loggedInUser}}
+    <h1>Hello {{loggedInUser.username}}</h1>
+    <h1>You're logged in</h1>
+{{/if}}
+
+<h1>Times you've visited this page: <b>{{ visitCount }}</b></h1>
+
 <h1>My name is Kai and my fav food is {{ favoriteFood }}</h1>
 
-<ul>
-    {{#each users as |user|}}
-        <li>
-            <p>User id: {{user.id}}</p>
-            <p>Username: {{user.username}}</p>
-            <p>User email: {{user.email}}</p>
-        </li>
-    {{/each}}
-</ul>
+{{> userList}}

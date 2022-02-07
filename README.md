@@ -172,8 +172,23 @@ res.render - will look in views folder for a template with the same name declare
 
 will take template and render in the body {{{body}}} and render template to the page
 
+## 11- Add partials
+mkdir partials
 
+{{> userList}}
+takes html from partial and injects into allUsers
 
+## 12- Authentification
+Install express-session
+require in server.js
+add SESSION_SECRET to .env file
+
+add session to userController
+
+Create a route for logging in
+- create public folder
+- js > app.js
+- user controller - add login function
 
 
 
