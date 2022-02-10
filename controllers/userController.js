@@ -16,14 +16,15 @@ module.exports = {
                 password,
             });
             res.json(user);
+            console.log(user);
         } catch (e) {
             res.json(e);
         }
     },
 // get all users
-    getAllUsers: async (req, res) => {
         // req.session.destroy(() => {
         // });
+    getAllUsers: async (req, res) => {
         req.session.save(() => {
             if (req.session.visitCount) {
                 req.session.visitCount++;
@@ -63,18 +64,6 @@ module.exports = {
             res.json(e);
         }
     },
-    getAllUsersPt2: async (req, res) => {
-        try {
-            const usersData = await User.findAll({});
-            const users = usersData.map(user => user.get({plain: true}));
-            res.render('allUsersPt2', {
-                users,
-                favoriteFood: 'Ice cream',
-            });
-        } catch (e) {
-            res.json(e);
-        }
-    },
     login: async (req, res) => {
         try {
 // first find the user with the given email address
@@ -82,16 +71,18 @@ module.exports = {
 // check if the password from the form is the same password as the user found
 // with the given email
 // if that is true, save the user found in the req.session.user
-            const userFound = userData.get({plain: true});
+            const userFound = userData.get({ plain: true });
             if (userFound.password === req.body.password) {
+                console.log('im hit', 75);
                 req.session.save(() => {
                     req.session.user = userFound;
-                    res.json({success: true});
+                    res.json({ success: true });
                 });
             }
 // if false, ignore for now
         } catch (e) {
-        res.json(e);
+            console.log(e);
+            res.json(e);
         }
     }
 };
