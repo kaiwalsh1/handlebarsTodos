@@ -12,12 +12,14 @@ module.exports = {
 			});
 			res.render('todos', {
 				userTodos: userTodosData.map(userTodo => userTodo.get({ plain: true })),
-				user: req.session.user,
+				// currently logged in user
+                user: req.session.user,
 			});
 		} catch (e) {
 			res.json(e);
 		}
 	},
+    
 	createTodo: async (req, res) => {
 		const { task } = req.body;
 		try {

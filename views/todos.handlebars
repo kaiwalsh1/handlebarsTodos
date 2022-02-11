@@ -1,7 +1,7 @@
 <h1>Welcome {{user.username}}</h1>
 <form>
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="todoField">Please enter a todo</label>
+        <label for="todoField" class="form-label">Please enter a todo</label>
         <input type="text" class="form-control" id="todoField" aria-describedby="emailHelp">
     </div>
     <button type="submit" class="btn btn-primary" id="addTodoBtn">Submit</button>
@@ -9,8 +9,10 @@
 
 <ul class="list-group">
     {{#each userTodos as |todo|}}
-        {{#if}}
+        {{#if todo.completed}}
             <li class="list-group-item list-group-item-primary">{{todo.task}}</li>
+        {{else}}
+            <li class="list-group-item list-group-item-danger">{{todo.task}}</li>
         {{/if}}
     {{/each}}
     {{!-- <li class="list-group-item">An item</li>
