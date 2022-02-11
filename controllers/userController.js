@@ -55,8 +55,8 @@ module.exports = {
 // if that is true, save the user found in the req.session.user
             const userFound = userData.get({ plain: true });
             if (userFound.password === req.body.password) {
-                console.log('im hit', 75);
                 req.session.save(() => {
+                    req.session.loggedIn = true;
                     req.session.user = userFound;
                     res.json({ success: true });
                 });
@@ -78,9 +78,10 @@ module.exports = {
                 username,
                 password,
             });
+            const user = createdUser.get({plain: true});
             req.session.save(() => {
                 req.session.loggedIn = true;
-                req.session.user = createdUser;
+                req.session.user = user;
                 res.redirect('/todos');
             })
         } catch (e) {
@@ -98,5 +99,10 @@ module.exports = {
             return res.redirect('/todos');
         }
         res.render('signup');
+    },
+    logout: (req, res) => {
+        req.session.destroy(() => {
+            res.send({ status: true });
+        })
     },
 };

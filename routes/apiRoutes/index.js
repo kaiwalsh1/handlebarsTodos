@@ -5,5 +5,4 @@ const todoRoutes = require('./todoRoutes');
 router.use('/users', userRoutes);
 router.use('/todos', todoRoutes);
 
-
 module.exports = router;
